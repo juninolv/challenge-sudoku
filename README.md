@@ -1,1 +1,1 @@
-# challenge-sudoku
+# DIO Challenge - Sudoku
