@@ -1,12 +1,12 @@
 package me.dio.util;
 
 import me.dio.model.Board;
-import me.dio.util.strategy.AutoSolverStrategy;
-import me.dio.util.strategy.StrategyBase;
+import me.dio.util.strategy.AutoStrategy;
+import me.dio.util.strategy.BaseStrategy;
 
-public class SudokuAutoSolver extends StrategyBase implements AutoSolverStrategy {
+public class SudokuAutoSolver extends BaseStrategy implements AutoStrategy {
 
-    public SudokuAutoSolver(Board board) {
+    public SudokuAutoSolver(final Board board) {
         super(board);
     }
 

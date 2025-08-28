@@ -1,17 +1,17 @@
 package me.dio.util;
 
 import me.dio.model.Board;
-import me.dio.util.strategy.PlayerSolverStrategy;
-import me.dio.util.strategy.StrategyBase;
+import me.dio.util.strategy.PlayerStrategy;
+import me.dio.util.strategy.BaseStrategy;
 
-public class SudokuPlayerSolver extends StrategyBase implements PlayerSolverStrategy {
-    
-    public SudokuPlayerSolver(Board board) {
+public class SudokuPlayerSolver extends BaseStrategy implements PlayerStrategy {
+
+    public SudokuPlayerSolver(final Board board) {
         super(board);
     }
 
     @Override
-    public boolean insert(int row, int col, int num) {
+    public final boolean insert(final int row, final int col, final int num) {
         if (board.getValues()[row][col] != 0) {
             return false;
         }
@@ -21,7 +21,7 @@ public class SudokuPlayerSolver extends StrategyBase implements PlayerSolverStra
         }
 
         board.getValues()[row][col] = num;
-        
+
         return true;
     }
 }

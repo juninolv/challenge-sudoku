@@ -153,4 +153,9 @@ buildNumber.properties
 .history
 .ionide
 
+# Project
+
+/.devcontainer/
+/.github
+
 # End of https://www.toptal.com/developers/gitignore/api/java,maven,intellij+all,visualstudiocode

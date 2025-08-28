@@ -5,13 +5,13 @@ public enum Level {
     MIDDLE(45),
     DIFFICULT(55);
 
-    private int value;
+    private final int cells;
 
-    private Level(int value) {
-        this.value = value;
+    Level(final int value) {
+        this.cells = value;
     }
 
     public int get() {
-        return value;
-    }   
+        return cells;
+    }
 }

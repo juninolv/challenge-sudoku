@@ -1,15 +1,14 @@
 package me.dio.util.strategy;
 
 import java.security.SecureRandom;
-import java.util.Collections;
 
 import me.dio.model.Board;
 
-public abstract class StrategyBase {
+public abstract class BaseStrategy {
     protected final Board board;
 
-    protected StrategyBase(Board board) {
-        this.board = board;
+    protected BaseStrategy(final Board value) {
+        this.board = value;
         this.build();
     }
 
@@ -19,7 +18,7 @@ public abstract class StrategyBase {
         }
     }
 
-    protected boolean fill(int row, int col) {
+    protected final boolean fill(final int row, final int col) {
         if (row == 9) {
             return true;
         }
@@ -27,8 +26,6 @@ public abstract class StrategyBase {
         if (col == 9) {
             return fill(row + 1, 0);
         }
-
-        Collections.shuffle(board.getNums());
 
         for (int num : board.getNums()) {
             if (isSafe(row, col, num)) {
@@ -45,7 +42,7 @@ public abstract class StrategyBase {
         return false;
     }
 
-    protected void leveling() {
+    protected final void leveling() {
         SecureRandom random = new SecureRandom();
         int cells = board.getLevel().get();
 
@@ -60,7 +57,9 @@ public abstract class StrategyBase {
         }
     }
 
-    protected boolean isSafe(int row, int col, int num) {
+    protected final boolean isSafe(
+        final int row, final int col, final int num
+    ) {
         for (int i = 0; i < 9; i++) {
             if (board.getValues()[row][i] == num) {
                 return false;
@@ -75,7 +74,10 @@ public abstract class StrategyBase {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                if (board.getValues()[i + (row - (row % 3))][j + (col - (col % 3))] == num) {
+                int rowBlock = i + (row - (row % 3));
+                int colBlock = j + (col - (col % 3));
+
+                if (board.getValues()[rowBlock][colBlock] == num) {
                     return false;
                 }
             }

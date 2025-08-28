@@ -1,5 +1,5 @@
 package me.dio.util.strategy;
 
-public interface PlayerSolverStrategy extends SudokuStrategy {
+public interface PlayerStrategy extends SudokuStrategy {
     boolean insert(int row, int col, int num);
 }
